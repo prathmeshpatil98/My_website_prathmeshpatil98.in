@@ -1,46 +1,52 @@
+# ======================
 # Python
+# ======================
 __pycache__/
 *.py[cod]
+*.pyc
 *.egg-info/
 .venv/
-*.pyc
 dist/
 build/
-*.egg-info
 
+# ======================
 # Node
+# ======================
 node_modules/
-/frontend/node_modules/
 frontend/dist/
 
+# ======================
 # Database
+# ======================
 backend/contacts.db
 
-# Env
+# ======================
+# Environment
+# ======================
 .env
 .env.local
 
+# ======================
 # macOS
+# ======================
 .DS_Store
 .AppleDouble
 .LSOverride
 
+# ======================
 # IDE
+# ======================
 .vscode/
 .idea/
 
-# Build & Cache
-build/
-dist/
+# ======================
+# Cache
+# ======================
 .cache/
 
-# Large files and directories
+# ======================
+# Assets / Large files
+# ======================
 photo/
-*.jpg
-*.jpeg
-*.png
-*.gif
 *.zip
 *.tar.gz
-
-*** End Patch
