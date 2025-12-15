@@ -281,23 +281,34 @@ const ContactForm = () => {
     const finalMessage = `[Type: ${formState.projectType}]\n\n${formState.message}`;
     formData.append('message', finalMessage);
 
+    // --- SERVERLESS CHANGE: Formspree Integration ---
+    // 1. Go to https://formspree.io
+    // 2. Create a new form
+    // 3. Replace 'YOUR_FORMSPREE_ID' below with your actual Form ID (e.g., 'xmqvbdlp')
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjkndgzk';
+
     try {
-      console.log("Submitting to:", `${API_BASE}/api/contact`);
-      const res = await fetch(`${API_BASE}/api/contact`, {
+      console.log("Submitting to Formspree...");
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          message: `[Type: ${formState.projectType}]\n\n${formState.message}`
+        }),
       });
 
       console.log("Response status:", res.status);
 
       if (res.ok) {
-        const data = await res.json();
-        console.log("Success data:", data);
         setStatus('success');
         setFormState({ name: '', email: '', projectType: 'AI Agent', message: '' });
       } else {
-        const errorData = await res.text();
-        console.error("Server Error:", errorData);
+        const errorData = await res.json();
+        console.error("Formspree Error:", errorData);
         setStatus('error');
       }
     } catch (err) {
