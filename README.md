@@ -1,35 +1,34 @@
-# My Website — Backend + Frontend
+# My Personal Website (Frontend)
 
-This repository contains a FastAPI backend and a React frontend (Vite).
+This is a modern, responsive personal portfolio website built with **React** and **Vite**.
 
-Quick start (local)
+## Tech Stack
+*   **Framework**: React 18+
+*   **Build Tool**: Vite
+*   **Styling**: TailwindCSS & Framer Motion
+*   **Deployment**: GitHub Pages
 
-1. Backend (Python venv):
+## Getting Started
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r backend/requirements.txt
-uvicorn main:app --reload --port 8000
-```
+1.  Navigate to the frontend directory:
+    ```bash
+    cd frontend
+    ```
 
-2. Frontend (from `frontend/`):
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+3.  Run the development server:
+    ```bash
+    npm run dev
+    ```
 
-Contact persistence
+## Deployment
+This project is configured to deploy automatically to **GitHub Pages** via GitHub Actions.
+Any push to the `main` branch will trigger a build and deployment.
 
-- Contact form submissions are persisted to `backend/contacts.db` (SQLite).
-- Optionally configure SMTP via environment variables: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `EMAIL_TO`.
-
-Docker
-
-```bash
-docker compose up --build
-```
-
-*** End Patch
+### Contact Form
+The contact form uses **Formspree** (Serverless).
+Configure your Form ID in `frontend/src/App.jsx`.
